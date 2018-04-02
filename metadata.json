@@ -1,0 +1,18 @@
+{
+  "name": "InfiniTecnologia/puppet",
+  "version": "0.1.0",
+  "author": "InfiniTecnologia",
+  "summary": "Simple module to manage puppet server and puppet client",
+  "license": "Apache-2.0",
+  "source": "https://github.com/InfiniTecnologia/puppet-puppet",
+  "project_page": "https://github.com/InfiniTecnologia/puppet-puppet",
+  "issues_url": "https://github.com/InfiniTecnologia/puppet-puppet/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "data_provider": null
+}
+
