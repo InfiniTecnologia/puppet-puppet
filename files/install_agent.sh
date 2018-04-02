@@ -21,36 +21,36 @@ if [ -f /etc/redhat-release ]; then
         yum install -y "puppet-agent-${AGENT_VERSION}*"
     fi
 elif [ -f /etc/debian_version ]; then
-		DEBIAN_MAJ_VERSION=`cat /etc/debian_version | sed s/.*release\ // | sed s/\ .*// | cut -d'.' -f1`
-  	OS_SUPPORTED=true
-  	case "$DEBIAN_MAJ_VERSION" in
-    	8)
-      	DEBIAN_MAJ_VERSION="jessie"
-		  	;;
+    DEBIAN_MAJ_VERSION=`cat /etc/debian_version | sed s/.*release\ // | sed s/\ .*// | cut -d'.' -f1`
+    OS_SUPPORTED=true
+    case "$DEBIAN_MAJ_VERSION" in
+        8)
+      	    DEBIAN_MAJ_VERSION="jessie"
+	    ;;
     	9)
-      	DEBIAN_MAJ_VERSION="stretch"
-		  	;;
+      	    DEBIAN_MAJ_VERSION="stretch"
+	    ;;
     	*)
-      	OS_SUPPORTED=false
-	    	;;
-		esac
-  	if $OS_SUPPORTED; then
-    		if [ ${AGENT_VERSION:0:1} == "5" ]; then
-        		REPO_URL="https://apt.puppetlabs.com/puppet5-release-$DEBIAN_MAJ_VERSION.deb"
-        		PKG="puppet5-release-$DEBIAN_MAJ_VERSION.deb"
-    		else
-        		REPO_URL="https://apt.puppetlabs.com/puppetlabs-release-$DEBIAN_MAJ_VERSION.deb"
-        		PKG="puppetlabs-release-pc1-$DEBIAN_MAJ_VERSION.deb"
-    		fi
-    		wget $REPO_URL
-    		dpkg -i $PKG
-    		apt-get update
-    		apt-get install puppet-agent=${AGENT_VERSION}*
-  	fi
+      	    OS_SUPPORTED=false
+	    ;;
+    esac
+    if $OS_SUPPORTED; then
+        if [ ${AGENT_VERSION:0:1} == "5" ]; then
+            REPO_URL="https://apt.puppetlabs.com/puppet5-release-$DEBIAN_MAJ_VERSION.deb"
+            PKG="puppet5-release-$DEBIAN_MAJ_VERSION.deb"
+    	else
+            REPO_URL="https://apt.puppetlabs.com/puppetlabs-release-$DEBIAN_MAJ_VERSION.deb"
+            PKG="puppetlabs-release-pc1-$DEBIAN_MAJ_VERSION.deb"
+    	fi
+    	wget $REPO_URL
+    	dpkg -i $PKG
+    	apt-get update
+    	apt-get install puppet-agent=${AGENT_VERSION}*
+    fi
 fi
 
 if $OS_SUPPORTED; then
-        echo '[INFO] Succesful!'
+    echo '[INFO] Succesful!'
 else
-        echo '[ERROR] This System OS is not current suportted'
+    echo '[ERROR] This System OS is not current suportted'
 fi
