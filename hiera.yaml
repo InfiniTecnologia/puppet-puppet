@@ -7,7 +7,7 @@ hierarchy:
   - name: 'operating_systems'
     patchs:
       - 'os/dist/%{facts.os.name}/%{facts.os.release.major}.yaml'
-      - "oses/family/%{facts.os.family}.yaml"
+      - "os/family/%{facts.os.family}.yaml"
   - name: "common"
     path: "common.yaml"
 
