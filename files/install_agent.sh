@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -euo pipefail
+
 AGENT_VERSION=$1
 OS_SUPPORTED=false
 REPO_URL=''
