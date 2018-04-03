@@ -19,15 +19,15 @@
 # Copyright 2018 Infini Tecnologia
 #
 class puppet::server(
-	$version,
-	$enable,
-	$package,
-	$service,
-	$manage_service,
-	) {
-	
-	include puppet::server::install
+  $version,
+  $enable,
+  $package,
+  $service,
+  $manage_service,
+  ) {
 
-	#Class['puppet::server::install']
+  include puppet::server::install
+
+  #Class['puppet::server::install']
 
 }
