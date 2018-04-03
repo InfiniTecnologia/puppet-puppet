@@ -24,10 +24,13 @@ class puppet::server(
   $package,
   $service,
   $manage_service,
+  $server_configs,
   ) {
 
   include puppet::server::install
+  include puppet::server::configure
 
-  #Class['puppet::server::install']
+  Class['puppet::server::install']
+    ->Class['puppet::server::configure']
 
 }
