@@ -1,5 +1,5 @@
 {
-  "name": "InfiniTecnologia/puppet",
+  "name": "Infini-puppet",
   "version": "0.1.0",
   "author": "InfiniTecnologia",
   "summary": "Simple module to manage puppet server and puppet client",

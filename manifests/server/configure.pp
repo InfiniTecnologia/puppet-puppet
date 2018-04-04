@@ -33,7 +33,7 @@ class puppet::server::configure{
   if is_hash($puppet::server::autosign) {
     file {'autosign.conf':
       path => '/etc/puppetlabs/puppet/autosign.conf',
-      content => epp('puppet/puppet.conf.epp', {arr_autosign => $puppet::server::autosign}),
+      content => epp('puppet/autosign.conf.epp', {arr_autosign => $puppet::server::autosign}),
     }
   }
 
