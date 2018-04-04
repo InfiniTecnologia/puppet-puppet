@@ -4,10 +4,6 @@ defaults:
   datadir: data
   data_hash: yaml_data
 hierarchy:
-  - name: 'operating_systems'
-    patchs:
-      - 'os/dist/%{facts.os.name}/%{facts.os.release.major}.yaml'
-      - "os/family/%{facts.os.family}.yaml"
   - name: "common"
     path: "common.yaml"
 

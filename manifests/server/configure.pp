@@ -22,7 +22,7 @@ class puppet::server::configure{
 
   file {'puppet.conf':
     path    => '/etc/puppetlabs/puppet/puppet.conf',
-    content => epp($puppet_config, $puppet::server::puppet_config),
+    content => epp('puppet/puppet.conf.epp', {puppet_config => $puppet::server::puppet_config}),
     mode    => '0644',
   }
 
