@@ -1,0 +1,9 @@
+### MANAGED BY PUPPET ###
+<% $puppet_config.each |$k, $v| { -%>
+  <% if is_hash($v) { -%>
+    [<%= $k %>]
+    <% $v.sort.each |$ki, $vi| { -%>
+      <%= $ki%> = <%= $vi %>
+    <%  } -%>
+  <%  }  -%>
+<% } -%>

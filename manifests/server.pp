@@ -24,7 +24,7 @@ class puppet::server(
   $package,
   $service,
   $manage_service,
-  $server_configs,
+  $puppet_config,
   ) {
 
   include puppet::server::install
