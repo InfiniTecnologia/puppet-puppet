@@ -20,17 +20,17 @@
 #
 class puppet::server::configure{
 
-  if $puppet::server::autsign == true {
+  if $puppet::server::autosign == true {
     $conf_autosign = {
       'master' => {
-        'autsign' => true
+        'autosign' => true
       }
     }
   }else{
     $conf_autosign = {}
   }
 
-  $puppet_config1 = deep_merge($puppet::server::puppet_config, $conf_autosign)
+  $puppet_config = deep_merge($puppet::server::puppet_config, $conf_autosign)
 
   file {'puppet.conf':
     path    => '/etc/puppetlabs/puppet/puppet.conf',

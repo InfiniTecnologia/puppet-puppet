@@ -25,7 +25,7 @@ class puppet::server(
   $service,
   $manage_service,
   $puppet_config,
-  $autsign,
+  $autosign = undef,
   ) {
 
   include puppet::server::install
