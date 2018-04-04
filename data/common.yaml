@@ -4,3 +4,12 @@ puppet::server::enable: true
 puppet::server::package: 'puppetserver'
 puppet::server::service: 'puppetserver'
 puppet::server::manage_service: true
+
+puppet::server::puppet_config:
+  master:
+    vardir: '/opt/puppetlabs/server/data/puppetserver'
+    logdir: '/var/log/puppetlabs/puppetserver'
+    rundir: '/var/run/puppetlabs/puppetserver'
+    pidfile: '/var/run/puppetlabs/puppetserver/puppetserver.pid'
+    codedir: '/etc/puppetlabs/code'
+
