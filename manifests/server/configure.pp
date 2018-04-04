@@ -30,6 +30,15 @@ class puppet::server::configure{
     $conf_autosign = {}
   }
 
+  if is_hash($puppet::server::autosign) {
+    file {'autosign.conf':
+      path => '/etc/puppetlabs/puppet/autosign.conf',
+      content => epp('puppet/puppet.conf.epp', {arr_autosign => $puppet::server::autosign}),
+    }
+  }
+
+
+
   $puppet_config = deep_merge($puppet::server::puppet_config, $conf_autosign)
 
   file {'puppet.conf':

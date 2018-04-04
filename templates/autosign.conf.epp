@@ -1,0 +1,7 @@
+# This file is being maintained by Puppet.
+# DO NOT EDIT
+<% if @arr_autosign != nil -%>
+<%   @arr_autosign.each do |entry| -%>
+<%=    entry %>
+<%   end -%>
+<% end -%>
