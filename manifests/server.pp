@@ -25,6 +25,7 @@ class puppet::server(
   $service,
   $manage_service,
   $puppet_config,
+  $autsign,
   ) {
 
   include puppet::server::install
