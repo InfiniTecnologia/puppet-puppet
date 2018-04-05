@@ -1,6 +1,5 @@
 ### MANAGED BY PUPPET ###
 # DO NOT EDIT
-
 <% if $arr_autosign != nil { -%>
 <%   $arr_autosign.each |$entry| {-%>
 <%=    $entry %>

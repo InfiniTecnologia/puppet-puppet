@@ -1,11 +1,10 @@
 ### MANAGED BY PUPPET ###
 # DO NOT EDIT
-
 <% $puppet_config.each |$k, $v| { -%>
-  <% if is_hash($v) { -%>
+<%   if is_hash($v) { -%>
 [<%= $k %>]
-    <% $v.each |$ki, $vi| { -%>
-<%= $ki%> = <%= $vi %>
-    <%  } -%>
-  <%  }  -%>
+<%     $v.each |$ki, $vi| { -%>
+<%=      $ki%> = <%= $vi %>
+<%     } -%>
+<%   }  -%>
 <% } -%>
