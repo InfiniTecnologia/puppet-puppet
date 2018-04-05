@@ -33,13 +33,15 @@ class puppet::server::configure{
 
   if $puppet::server::autosign =~ Array {
     file {'puppet/autosign.conf':
-      path => '/etc/puppetlabs/puppet/autosign.conf',
+      path    => '/etc/puppetlabs/puppet/autosign.conf',
       content => epp('puppet/autosign.conf.epp', {arr_autosign => $puppet::server::autosign}),
+      notify  => Service[$puppet::server::service::name],
     }
   } else {
     file { 'puppet/autosign.conf':
       path   => '/etc/puppetlabs/puppet/autosign.conf',
       ensure => absent,
+      notify => Service[$puppet::server::service::name],
     }
   }
 
@@ -50,11 +52,15 @@ class puppet::server::configure{
     path    => '/etc/puppetlabs/puppet/puppet.conf',
     content => epp('puppet/puppet.conf.epp', {puppet_config => $puppet_config}),
     mode    => '0644',
+    notify  => Service[$puppet::server::service::name],
   }
 
-  #augeas {'java_args':
-  #  context => "${puppet::server::path_system_config}/puppetserver",
-  #  changes => [ "set JAVA_ARGS '\"${puppetserver::java_args}\"'", ],
-  #  notify  => Service['puppetserver']
-  #}
+  if $puppet::server::java_args != undef {
+    augeas {'java_args':
+      context => "${puppet::server::path_system_config}/puppetserver",
+      changes => [ "set JAVA_ARGS '\"${puppetserver::java_args}\"'", ],
+      notify  => Service[$puppet::server::service::name],
+    }
+  }
+
 }

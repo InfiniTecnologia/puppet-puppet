@@ -19,19 +19,21 @@
 # Copyright 2018 Infini Tecnologia
 #
 class puppet::server(
-  $version,
-  $enable,
-  $package,
-  $service,
-  $manage_service,
-  $puppet_config_override_defaults,
-  $autosign = undef,
-  ) {
+  String                                      $version,
+  String                                      $package,
+  String                                      $service,
+  Boolean                                     $manage_service,
+  String                                      $java_args = undef,
+  Variant[Array[String, 1], Undef, Boolean]   $autosign = undef,
+  Hash                                        $puppet_config_override_defaults = {},
+) {
 
   include puppet::server::install
   include puppet::server::configure
+  include puppet::server::service
 
   Class['puppet::server::install']
-    ->Class['puppet::server::configure']
+    -> Class['puppet::server::configure']
+      ~> Class['puppet::server::service']
 
 }
