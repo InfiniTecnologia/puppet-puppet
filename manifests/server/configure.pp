@@ -20,19 +20,22 @@
 #
 class puppet::server::configure{
 
-  if $puppet::server::autosign == true {
+
+  if $puppet::server::autosign =~ Boolean {
     $conf_autosign = {
       'master' => {
         'autosign' => true
       }
     }
-  } elsif $puppet::server::autosign != undef {
+  } else {
+    $conf_autosign = {}
+  }
+
+  if $puppet::server::autosign =~ Array {
     file {'puppet/autosign.conf':
       path => '/etc/puppetlabs/puppet/autosign.conf',
       content => epp('puppet/autosign.conf.epp', {arr_autosign => $puppet::server::autosign}),
     }
-  } else {
-    $conf_autosign = {}
   }
 
   $puppet_config = deep_merge($puppet::server::puppet_config, $conf_autosign)
