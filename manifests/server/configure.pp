@@ -24,7 +24,7 @@ class puppet::server::configure{
   if $puppet::server::autosign =~ Boolean {
     $conf_autosign = {
       'master' => {
-        'autosign' => true
+        'autosign' => $puppet::server::autosign
       }
     }
   } else {
