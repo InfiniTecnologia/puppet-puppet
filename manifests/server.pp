@@ -24,7 +24,7 @@ class puppet::server(
   $package,
   $service,
   $manage_service,
-  $puppet_config,
+  $puppet_config_override_defaults,
   $autosign = undef,
   ) {
 

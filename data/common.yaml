@@ -13,3 +13,5 @@ puppet::server::puppet_config:
     pidfile: '/var/run/puppetlabs/puppetserver/puppetserver.pid'
     codedir: '/etc/puppetlabs/code'
 
+puppet::server::puppet_config_over:
+  master: vardir: '/opt/puppetlabs/server/data/puppetserver'

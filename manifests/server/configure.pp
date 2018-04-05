@@ -43,7 +43,8 @@ class puppet::server::configure{
     }
   }
 
-  $puppet_config = deep_merge($puppet::server::puppet_config, $conf_autosign)
+  $puppet_config_defaults = lookup('puppet::server::puppet_config');
+  $puppet_config = deep_merge($puppet_config_defaults, $conf_autosign, $puppet::server::puppet_config_override_defaults)
 
   file {'puppet/puppet.conf':
     path    => '/etc/puppetlabs/puppet/puppet.conf',
