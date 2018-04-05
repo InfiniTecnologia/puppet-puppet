@@ -1,4 +1,6 @@
 ### MANAGED BY PUPPET ###
+# DO NOT EDIT
+
 <% $puppet_config.each |$k, $v| { -%>
   <% if is_hash($v) { -%>
 [<%= $k %>]

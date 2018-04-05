@@ -26,22 +26,18 @@ class puppet::server::configure{
         'autosign' => true
       }
     }
-  }else{
-    $conf_autosign = {}
-  }
-
-  if is_hash($puppet::server::autosign) {
-    file {'autosign.conf':
+  } else if $puppet::server::autosign != undef {
+    file {'puppet/autosign.conf':
       path => '/etc/puppetlabs/puppet/autosign.conf',
       content => epp('puppet/autosign.conf.epp', {arr_autosign => $puppet::server::autosign}),
     }
+  } else {
+    $conf_autosign = {}
   }
-
-
 
   $puppet_config = deep_merge($puppet::server::puppet_config, $conf_autosign)
 
-  file {'puppet.conf':
+  file {'puppet/puppet.conf':
     path    => '/etc/puppetlabs/puppet/puppet.conf',
     content => epp('puppet/puppet.conf.epp', {puppet_config => $puppet_config}),
     mode    => '0644',
