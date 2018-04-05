@@ -26,7 +26,7 @@ class puppet::server::configure{
         'autosign' => true
       }
     }
-  } else if $puppet::server::autosign != undef {
+  } elsif $puppet::server::autosign != undef {
     file {'puppet/autosign.conf':
       path => '/etc/puppetlabs/puppet/autosign.conf',
       content => epp('puppet/autosign.conf.epp', {arr_autosign => $puppet::server::autosign}),
