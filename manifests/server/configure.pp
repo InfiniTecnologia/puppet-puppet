@@ -36,6 +36,11 @@ class puppet::server::configure{
       path => '/etc/puppetlabs/puppet/autosign.conf',
       content => epp('puppet/autosign.conf.epp', {arr_autosign => $puppet::server::autosign}),
     }
+  } else {
+    file { 'puppet/autosign.conf':
+      path   => '/etc/puppetlabs/puppet/autosign.conf',
+      ensure => absent,
+    }
   }
 
   $puppet_config = deep_merge($puppet::server::puppet_config, $conf_autosign)
