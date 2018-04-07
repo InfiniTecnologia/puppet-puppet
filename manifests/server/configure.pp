@@ -39,8 +39,8 @@ class puppet::server::configure{
     }
   } else {
     file { 'puppet/autosign.conf':
+      ensure => 'absen',
       path   => '/etc/puppetlabs/puppet/autosign.conf',
-      ensure => absent,
       notify => Service[$puppet::server::service::name],
     }
   }
