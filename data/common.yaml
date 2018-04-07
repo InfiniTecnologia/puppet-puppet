@@ -4,6 +4,7 @@ puppet::server::enable: true
 puppet::server::package: 'puppetserver'
 puppet::server::service: 'puppetserver'
 puppet::server::manage_service: true
+puppet::server::
 
 puppet::server::puppet_config:
   master:

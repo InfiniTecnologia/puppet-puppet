@@ -6,4 +6,7 @@ defaults:
 hierarchy:
   - name: "common"
     path: "common.yaml"
-
+  - name: "distros"
+    paths:
+      - "distros/%{facts.os.name}-%{facts.os.release.major}.yaml"
+      - "distros/%{facts.os.family}.yaml"
