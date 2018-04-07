@@ -57,7 +57,7 @@ class puppet::server::configure{
 
   if $puppet::server::java_args != undef {
     augeas {'java_args':
-      context => "${puppet::server::path_system_config}/puppetserver",
+      context => "${puppet::server::system_config_path}/puppetserver",
       changes => [ "set JAVA_ARGS '\"${puppet::server::java_args}\"'", ],
       notify  => Service[$puppet::server::service],
     }
