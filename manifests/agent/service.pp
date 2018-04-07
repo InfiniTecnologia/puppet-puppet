@@ -18,9 +18,15 @@
 #
 # Copyright 2018 Infini Tecnologia
 #
-class puppet::agent::install{
-  package { 'puppet-agent':
-    ensure => $::puppet::agent::version,
-    name   => $::puppet::agent::package,
+class puppet::agent::service{
+  if $puppet::agent::manage_service == true {
+    service{$puppet::agent::service:
+      ensure    => 'running',
+      enable    => true,
+      subscribe => [
+        File['puppet/puppet.conf'],
+        File['puppet/autosign.conf'],
+      ],
+    }
   }
 }

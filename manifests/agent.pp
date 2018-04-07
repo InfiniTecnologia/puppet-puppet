@@ -1,6 +1,6 @@
-# == Class: puppet:agent
+# == Class: puppet:server
 #
-# This is will manage puppet-agent daemon
+# This is will install and configure puppet-server daemon
 # === Requirements
 #
 #
@@ -12,7 +12,7 @@
 #
 # === Authors
 #
-# Author Name: Rafael Sales <rafael@infinitecnologia.com.br>
+# Author Name: Raphael Neumann <raphael@infinitecnologia.com.br>
 #
 # === Copyright
 #
@@ -24,10 +24,14 @@ class puppet::agent(
   $package,
   $service,
   $manage_service,
+  $puppet_config_override_defaults,
+  $autosign = undef,
   ) {
 
   include puppet::agent::install
+  include puppet::agent::configure
 
-  #Class['puppet::server::install']
+  Class['puppet::agent::install']
+    ->Class['puppet::agent::configure']
 
 }
