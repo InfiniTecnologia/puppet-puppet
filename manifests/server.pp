@@ -23,10 +23,10 @@ class puppet::server(
   String                                      $package,
   String                                      $service,
   Boolean                                     $manage_service,
-  String                                      $java_args = undef,
+  String                                      $system_config_path,
+  Variant[String, Undef]                      $java_args = undef,
   Variant[Array[String, 1], Undef, Boolean]   $autosign = undef,
   Hash                                        $puppet_config_override_defaults = {},
-  String                                      $system_config_path = undef,
 ) {
 
   include puppet::server::install
