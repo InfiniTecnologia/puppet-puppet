@@ -20,17 +20,6 @@
 #
 class puppet::agent::configure{
 
-
-  if $puppet::agent::autosign =~ Boolean {
-    $conf_autosign = {
-      'master' => {
-        'autosign' => $puppet::agent::autosign
-      }
-    }
-  } else {
-    $conf_autosign = {}
-  }
-
   $puppet_config_defaults = lookup('puppet::agent::puppet_config');
   $puppet_config = deep_merge($puppet_config_defaults, $conf_autosign, $puppet::agent::puppet_config_override_defaults)
 

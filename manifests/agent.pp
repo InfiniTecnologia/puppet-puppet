@@ -19,13 +19,11 @@
 # Copyright 2018 Infini Tecnologia
 #
 class puppet::agent(
-  $version,
-  $enable,
-  $package,
-  $service,
-  $manage_service,
-  $puppet_config_override_defaults,
-  $autosign = undef,
+  String                                      $version,
+  String                                      $package,
+  String                                      $service,
+  Boolean                                     $manage_service,
+  Hash                                        $puppet_config_override_defaults = {},
   ) {
 
   include puppet::agent::install

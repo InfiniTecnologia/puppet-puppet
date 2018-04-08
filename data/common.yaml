@@ -12,13 +12,20 @@ puppet::server::puppet_config:
     rundir: '/var/run/puppetlabs/puppetserver'
     pidfile: '/var/run/puppetlabs/puppetserver/puppetserver.pid'
     codedir: '/etc/puppetlabs/code'
+    dns_alt_names: '%{facts.fqdn}, puppet.%{facts.domain}'
 
-puppet::server::puppet_config_over:
-  master: vardir: '/opt/puppetlabs/server/data/puppetserver'
+#puppet::server::puppet_config_over:
+#  master: vardir: '/opt/puppetlabs/server/data/puppetserver'
+
+puppet::agent::version: 'present'
+puppet::agent::enable: true
+puppet::agent::package: 'puppet-agent'
+puppet::agent::service: 'puppet'
+puppet::agent::manage_service: true
 
 puppet::agent::puppet_config:
   main:
-    certname: %{facts.fqdn}
-    server: 'puppet.%{facts.fqdn}'
+    certname: "%{facts.fqdn}"
+    server: 'puppet.%{facts.domain}'
     environment: 'production'
-    runtinterval: '30m'
+    runinterval: '30m'
