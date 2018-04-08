@@ -42,7 +42,19 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class puppet {
+class puppet( 
+  String                                      $version,
+  String                                      $package,
+  String                                      $service,
+  Boolean                                     $manage_service,
+  Hash                                        $puppet_config_override_defaults = {},
+  ) {
 
+  include puppet::agent::install
+  include puppet::agent::configure
+  include puppet::agent::service
 
+  Class['puppet::agent::install']
+    ->Class['puppet::agent::configure']
+      ~> Class['puppet::agent::service']
 }

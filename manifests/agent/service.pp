@@ -19,13 +19,12 @@
 # Copyright 2018 Infini Tecnologia
 #
 class puppet::agent::service{
-  if $puppet::agent::manage_service == true {
-    service{$puppet::agent::service:
+  if $puppet::manage_service == true {
+    service{$puppet::service:
       ensure    => 'running',
       enable    => true,
       subscribe => [
         File['puppet/puppet.conf'],
-        File['puppet/autosign.conf'],
       ],
     }
   }

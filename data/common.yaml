@@ -17,13 +17,13 @@ puppet::server::puppet_config:
 #puppet::server::puppet_config_over:
 #  master: vardir: '/opt/puppetlabs/server/data/puppetserver'
 
-puppet::agent::version: 'present'
-puppet::agent::enable: true
-puppet::agent::package: 'puppet-agent'
-puppet::agent::service: 'puppet'
-puppet::agent::manage_service: true
+puppet::version: 'present'
+puppet::enable: true
+puppet::package: 'puppet-agent'
+puppet::service: 'puppet'
+puppet::manage_service: true
 
-puppet::agent::puppet_config:
+puppet::puppet_config:
   main:
     certname: "%{facts.fqdn}"
     server: 'puppet.%{facts.domain}'
