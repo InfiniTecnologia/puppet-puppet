@@ -30,4 +30,5 @@ class puppet::agent::configure{
       mode    => '0644',
     }
   }
+  Host <<| tag == 'puppetserver' |>>
 }

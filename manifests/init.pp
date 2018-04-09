@@ -42,7 +42,7 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class puppet( 
+class puppet (
   String                                      $version,
   String                                      $package,
   String                                      $service,

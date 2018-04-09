@@ -70,4 +70,14 @@ class puppet::server::configure{
     }
   }
 
+  @@host{ $facts['fqdn']:
+    ip           => $facts['ipaddress'],
+    host_aliases => [
+      $facts['hostname'],
+      "puppet.${facts['domain']}",
+      puppet,
+    ],
+    tag          => ['puppetserver']
+  }
+
 }
