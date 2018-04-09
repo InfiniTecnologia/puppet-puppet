@@ -69,15 +69,17 @@ class puppet::server::configure{
       notify  => Service[$puppet::server::service],
     }
   }
-
-  @@host{ $facts['fqdn']:
-    ip           => $facts['ipaddress'],
-    host_aliases => [
-      $facts['hostname'],
-      "puppet.${facts['domain']}",
-      puppet,
-    ],
-    tag          => ['puppetserver']
+  if $puppet::manage_puppet_hosts {
+    @@host{ $facts['fqdn']:
+      ip           => $facts['ipaddress'],
+      host_aliases => [
+        $facts['hostname'],
+        "puppet.${facts['domain']}",
+        puppet,
+      ],
+      tag          => ['puppetserver']
+    }
   }
+
 
 }

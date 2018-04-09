@@ -43,11 +43,12 @@
 # Copyright 2018 Your name here, unless otherwise noted.
 #
 class puppet (
-  String                                      $version,
-  String                                      $package,
-  String                                      $service,
-  Boolean                                     $manage_service,
-  Hash                                        $puppet_config_override_defaults = {},
+  String      $version,
+  String      $package,
+  String      $service,
+  Boolean     $manage_service,
+  Boolean     $manage_puppet_hosts = false,
+  Hash        $puppet_config_override_defaults = {},
   ) {
 
   include puppet::agent::install

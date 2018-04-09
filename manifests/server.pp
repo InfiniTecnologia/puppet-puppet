@@ -27,6 +27,7 @@ class puppet::server(
   Variant[String, Undef]                      $java_args = undef,
   Variant[Array[String, 1], Undef, Boolean]   $autosign = undef,
   Hash                                        $puppet_config_override_defaults = {},
+
 ) {
 
   include puppet::server::install
