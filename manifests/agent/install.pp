@@ -20,7 +20,7 @@
 #
 class puppet::agent::install{
   package { 'puppet-agent':
-    ensure => $::puppet::agent::version,
-    name   => $::puppet::agent::package,
+    ensure => $::puppet::version,
+    name   => $::puppet::package,
   }
 }
