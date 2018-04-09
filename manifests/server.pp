@@ -32,9 +32,11 @@ class puppet::server(
   include puppet::server::install
   include puppet::server::configure
   include puppet::server::service
+  include puppet
 
   Class['puppet::server::install']
     -> Class['puppet::server::configure']
       ~> Class['puppet::server::service']
+        -> Class['puppet']
 
 }
