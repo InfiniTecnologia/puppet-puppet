@@ -1,6 +1,13 @@
 require 'spec_helper'
-describe 'puppet' do
-  context 'with default values for all parameters' do
-    it { should contain_class('puppet') }
-  end
+describe 'puppet', :type => :class do
+
+  it { is_expected.to compile }
+  it { is_expected.to compile.with_all_deps }
+
+  it { is_expected.to contain_class('puppet') }
+  it { is_expected.to contain_class('puppet::agent::install').that_comes_before('Class[puppet::agent::configure]') }
+  it { is_expected.to contain_class('puppet::agent::configure').that_comes_before('Class[puppet::agent::service]') }
+  it { is_expected.to contain_class('puppet::agent::service') }
+
+
 end

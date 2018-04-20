@@ -1,9 +1,10 @@
-source ENV['GEM_SOURCE'] || 'https://rubygems.org'
+source ENV['GEM_SOURCE'] || 'http://rubygems.org'
 
 puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : ['>= 3.3']
 gem 'facter', '>= 1.7.0'
 
 gem 'metadata-json-lint'
+gem 'rubocop'
 
 gem 'puppet', puppetversion
 gem 'puppet-lint', '>= 1.0.0'
