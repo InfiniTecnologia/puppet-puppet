@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/InfiniTecnologia/puppet-puppet.svg?branch=master)](https://travis-ci.org/InfiniTecnologia/puppet-puppet/) ![License](https://img.shields.io/badge/license-Apache%202-blue.svg)
 # puppet
 
 #### Table of Contents
