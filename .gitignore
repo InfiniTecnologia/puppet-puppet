@@ -1,1 +1,4 @@
 .idea/
+.*.sw[op]
+/Gemfile.local
+/Gemfile.lock
